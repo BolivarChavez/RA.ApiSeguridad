@@ -48,18 +48,18 @@ namespace ApiSeguridad.Controllers
         }
 
         [HttpGet]
-        [Route("Consulta")]
-        public IEnumerable<Usuarios> Get(int codigo)
+        [Route("Consulta/{codigo}/{usuario}")]
+        public IEnumerable<Usuarios> Get(int codigo, string usuario)
         {
             List<Usuarios> list_usuario;
             string JSONString = string.Empty;
 
-            list_usuario = _repository.Consulta(codigo).ToList();
+            list_usuario = _repository.Consulta(codigo, usuario).ToList();
             return list_usuario;
         }
 
         [HttpGet]
-        [Route("ConsultaGrupoOpcion")]
+        [Route("ConsultaGrupoOpcion/{usuario}")]
         public IEnumerable<UsuarioGrupoOpciones> ConsultaGrupoOpcion(int usuario)
         {
             List<UsuarioGrupoOpciones> list_grupo;
@@ -70,7 +70,7 @@ namespace ApiSeguridad.Controllers
         }
 
         [HttpGet]
-        [Route("ConsultaTransacciones")]
+        [Route("ConsultaTransacciones/{usuario}/{grupo}")]
         public IEnumerable<TransaccionesUsuario> ConsultaTransacciones(int usuario, int grupo)
         {
             List<TransaccionesUsuario> list_transaccion;

@@ -64,7 +64,7 @@ namespace ApiSeguridad.Controllers
         }
 
         [HttpGet]
-        [Route("Consulta")]
+        [Route("Consulta/{transaccion}")]
         public IEnumerable<TransaccionFacultad> Get(int transaccion)
         {
             List<TransaccionFacultad> list_facultad;

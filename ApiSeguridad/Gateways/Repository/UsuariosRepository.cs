@@ -2,7 +2,7 @@
 using AuditSeguridad.Entidades.Interfaces;
 using AuditSeguridad.Entidades.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace ApiSeguridad.Gateways.Repository
 {
@@ -36,13 +36,14 @@ namespace ApiSeguridad.Gateways.Repository
             return Context.Retorno.FromSqlRaw<Retorno>(sp_api, parms.ToArray()).ToList();
         }
 
-        public IEnumerable<Usuarios> Consulta(int codigo)
+        public IEnumerable<Usuarios> Consulta(int codigo, string usuario)
         {
-            string sp_api = "EXEC api_ConsultaUsuario @i_us_codigo";
+            string sp_api = "EXEC api_ConsultaUsuario @i_us_codigo, @i_us_login";
 
             List<SqlParameter> parms = new List<SqlParameter>
             {
-                new SqlParameter { ParameterName = "@i_us_codigo", Value = codigo}
+                new SqlParameter { ParameterName = "@i_us_codigo", Value = codigo},
+                new SqlParameter { ParameterName = "@i_us_login", Value = usuario}
             };
 
             return Context.Usuarios.FromSqlRaw<Usuarios>(sp_api, parms.ToArray()).ToList();

@@ -1,6 +1,4 @@
 ﻿using AuditSeguridad.Entidades.Models;
-using System.Collections.Generic;
-using System.Data;
 
 namespace AuditSeguridad.Entidades.Interfaces
 {
@@ -10,7 +8,7 @@ namespace AuditSeguridad.Entidades.Interfaces
 
         IEnumerable<Retorno> Actualizacion(Usuarios usuario);
 
-        IEnumerable<Usuarios> Consulta(int codigo);
+        IEnumerable<Usuarios> Consulta(int codigo, string usuario);
 
         IEnumerable<TransaccionesUsuario> ConsultaTransacciones(int usuario, int grupo);
 

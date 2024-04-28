@@ -2,7 +2,7 @@
 using AuditSeguridad.Entidades.Interfaces;
 using AuditSeguridad.Entidades.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace ApiSeguridad.Gateways.Repository
 {

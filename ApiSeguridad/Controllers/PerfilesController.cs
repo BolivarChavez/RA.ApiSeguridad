@@ -48,7 +48,7 @@ namespace ApiSeguridad.Controllers
         }
 
         [HttpGet]
-        [Route("Consulta")]
+        [Route("Consulta/{codigo}")]
         public IEnumerable<Perfiles> Get(int codigo)
         {
             List<Perfiles> list_perfil;

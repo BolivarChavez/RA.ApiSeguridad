@@ -48,7 +48,7 @@ namespace ApiSeguridad.Controllers
         }
 
         [HttpGet]
-        [Route("Consulta")]
+        [Route("Consulta/{codigo}")]
         public IEnumerable<GruposOpciones> Get(int codigo)
         {
             List<GruposOpciones> list_opcion;
