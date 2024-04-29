@@ -17,12 +17,13 @@ namespace ApiSeguridad.Gateways.Repository
 
         public IEnumerable<Retorno> Actualizacion(Transacciones transaccion)
         {
-            string sp_api = "EXEC api_ActualizaTransaccion @i_tr_codigo, @i_tr_descripcion, @i_tr_tipo, @i_tr_programa, @i_tr_estado, @i_usuario, @o_return, @o_msg";
+            string sp_api = "EXEC api_ActualizaTransaccion @i_tr_codigo, @i_tr_descripcion, @i_tr_descripcion_larga, @i_tr_tipo, @i_tr_programa, @i_tr_estado, @i_usuario, @o_return, @o_msg";
 
             List<SqlParameter> parms = new List<SqlParameter>
             {
                 new SqlParameter { ParameterName = "@i_tr_codigo", Value = transaccion.tr_codigo},
                 new SqlParameter { ParameterName = "@i_tr_descripcion", Value = transaccion.tr_descripcion},
+                new SqlParameter { ParameterName = "@i_tr_descripcion_larga", Value = transaccion.tr_descripcion_larga},
                 new SqlParameter { ParameterName = "@i_tr_tipo", Value = transaccion.tr_tipo},
                 new SqlParameter { ParameterName = "@i_tr_programa", Value = transaccion.tr_programa},
                 new SqlParameter { ParameterName = "@i_tr_estado", Value = transaccion.tr_estado},
@@ -48,12 +49,13 @@ namespace ApiSeguridad.Gateways.Repository
 
         public IEnumerable<Retorno> Ingreso(Transacciones transaccion)
         {
-            string sp_api = "EXEC api_IngresoTransaccion @i_tr_codigo, @i_tr_descripcion, @i_tr_tipo, @i_tr_programa, @i_tr_estado, @i_usuario, @o_return, @o_msg";
+            string sp_api = "EXEC api_IngresoTransaccion @i_tr_codigo, @i_tr_descripcion, @i_tr_descripcion_larga, @i_tr_tipo, @i_tr_programa, @i_tr_estado, @i_usuario, @o_return, @o_msg";
 
             List<SqlParameter> parms = new List<SqlParameter>
             {
                 new SqlParameter { ParameterName = "@i_tr_codigo", Value = transaccion.tr_codigo},
                 new SqlParameter { ParameterName = "@i_tr_descripcion", Value = transaccion.tr_descripcion},
+                new SqlParameter { ParameterName = "@i_tr_descripcion_larga", Value = transaccion.tr_descripcion_larga},
                 new SqlParameter { ParameterName = "@i_tr_tipo", Value = transaccion.tr_tipo},
                 new SqlParameter { ParameterName = "@i_tr_programa", Value = transaccion.tr_programa},
                 new SqlParameter { ParameterName = "@i_tr_estado", Value = transaccion.tr_estado},
