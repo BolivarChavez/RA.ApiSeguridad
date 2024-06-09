@@ -29,6 +29,7 @@ namespace ApiSeguridad.Gateways.Repository
                 new SqlParameter { ParameterName = "@i_us_ingresos", Value = usuario.us_ingresos},
                 new SqlParameter { ParameterName = "@i_us_ultimo_ingreso", Value = usuario.us_ultimo_ingreso},
                 new SqlParameter { ParameterName = "@i_us_estado", Value = usuario.us_estado},
+                new SqlParameter { ParameterName = "@i_usuario", Value = usuario.us_usuario_actualizacion},
                 new SqlParameter { ParameterName = "@o_return", Value = 0},
                 new SqlParameter { ParameterName = "@o_msg", Value = ""}
             };
@@ -88,6 +89,7 @@ namespace ApiSeguridad.Gateways.Repository
                 new SqlParameter { ParameterName = "@i_us_ingresos", Value = usuario.us_ingresos},
                 new SqlParameter { ParameterName = "@i_us_ultimo_ingreso", Value = usuario.us_ultimo_ingreso},
                 new SqlParameter { ParameterName = "@i_us_estado", Value = usuario.us_estado},
+                new SqlParameter { ParameterName = "@i_usuario", Value = usuario.us_usuario_creacion},
                 new SqlParameter { ParameterName = "@o_return", Value = 0},
                 new SqlParameter { ParameterName = "@o_msg", Value = ""}
             };
