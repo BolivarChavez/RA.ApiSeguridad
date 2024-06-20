@@ -15,6 +15,16 @@ namespace ApiSeguridad.Controllers
             _repository = repository;
         }
 
+        /// <summary>
+        /// Ingreso de una facultad relacionada a una transaccion 
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// tf_transaccion : Codigo de la transaccion <br />
+        /// tf_facultad : Codigo de la facultad <br />
+        /// tf_estado : Estado del registro [A] Activo, [I] Inactivo <br /><br />
+        /// Procedimiento almacenado : api_IngresoTransaccionFacultad
+        /// </remarks>
         [HttpPost]
         [Route("Ingreso")]
         public async Task<string> Ingreso([FromBody] TransaccionFacultad facultad)
@@ -31,6 +41,16 @@ namespace ApiSeguridad.Controllers
             return JSONString;
         }
 
+        /// <summary>
+        /// Actualiza el estado de una facultad ya asociada a una transaccion 
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// tf_transaccion : Codigo de la transaccion <br />
+        /// tf_facultad : Codigo de la facultad <br />
+        /// tf_estado : Estado del registro [A] Activo, [I] Inactivo <br /><br />
+        /// Procedimiento almacenado : api_ActualizaTransaccionFacultad
+        /// </remarks>
         [HttpPost]
         [Route("Actualizacion")]
         public async Task<string> Actualizacion([FromBody] TransaccionFacultad facultad)
@@ -47,6 +67,15 @@ namespace ApiSeguridad.Controllers
             return JSONString;
         }
 
+        /// <summary>
+        /// Elimina una facultad asociada a una transaccion 
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// tf_transaccion : Codigo de la transaccion <br />
+        /// tf_facultad : Codigo de la facultad <br />
+        /// Procedimiento almacenado : api_EliminaTransaccionFacultad
+        /// </remarks>
         [HttpPost]
         [Route("Eliminacion")]
         public async Task<string> Eliminacion([FromBody] TransaccionFacultad facultad)
@@ -63,6 +92,14 @@ namespace ApiSeguridad.Controllers
             return JSONString;
         }
 
+        /// <summary>
+        /// Consulta las facultades asociadas a una transaccion 
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// transaccion : Codigo de la transaccion <br />
+        /// Procedimiento almacenado : api_ConsultaTransaccionFacultad
+        /// </remarks>
         [HttpGet]
         [Route("Consulta/{transaccion}")]
         public IEnumerable<TransaccionFacultad> Get(int transaccion)

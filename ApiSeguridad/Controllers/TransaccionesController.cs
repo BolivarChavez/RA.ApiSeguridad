@@ -15,6 +15,19 @@ namespace ApiSeguridad.Controllers
             _repository = repository;
         }
 
+        /// <summary>
+        /// Insertar un nuevo registro de transaccion en la tabla Transacciones 
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// tr_codigo : Codigo de la transaccion, cero (0) para nueva transaccion <br />
+        /// tr_descripcion : Nombre o descripcion de la transaccion <br />
+        /// tr_descripcion_larga : Descripcion mas detallada <br />
+        /// tr_tipo : Tipo de transaccion [A] Acceso a opcion, [P] Permiso de uso <br />
+        /// tr_programa : Nombre del programa asociado a la transaccionn <br />
+        /// tr_estado: Estado de la transaccion [A] Activa, [I] Inactiva, [X] Eliminada <br /><br />
+        /// Procedimiento almacenado : api_IngresoTransaccion
+        /// </remarks>
         [HttpPost]
         [Route("Ingreso")]
         public async Task<string> Ingreso([FromBody] Transacciones transaccion)
@@ -31,6 +44,19 @@ namespace ApiSeguridad.Controllers
             return JSONString;
         }
 
+        /// <summary>
+        /// Actualizar registro de transaccion en la tabla Transacciones 
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// tr_codigo : Codigo de la transaccion <br />
+        /// tr_descripcion : Nombre o descripcion de la transaccion <br />
+        /// tr_descripcion_larga : Descripcion mas detallada <br />
+        /// tr_tipo : Tipo de transaccion [A] Acceso a opcion, [P] Permiso de uso <br />
+        /// tr_programa : Nombre del programa asociado a la transaccionn <br />
+        /// tr_estado: Estado de la transaccion [A] Activa, [I] Inactiva, [X] Eliminada <br /><br />
+        /// Procedimiento almacenado : api_ActualizaTransaccion
+        /// </remarks>
         [HttpPost]
         [Route("Actualizacion")]
         public async Task<string> Actualizacion([FromBody] Transacciones transaccion)
@@ -47,6 +73,14 @@ namespace ApiSeguridad.Controllers
             return JSONString;
         }
 
+        /// <summary>
+        /// Consulta registros de transacciones ingresadas en la tabla Transacciones 
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// codigo : Codigo de la transaccion. Para consultar todas las transacciones colocar cero (0) <br />
+        /// Procedimiento almacenado : api_ConsultaTransaccion
+        /// </remarks>
         [HttpGet]
         [Route("Consulta/{codigo}")]
         public IEnumerable<Transacciones> Get(int codigo)

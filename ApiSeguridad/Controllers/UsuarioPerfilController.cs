@@ -15,6 +15,16 @@ namespace ApiSeguridad.Controllers
             _repository = repository;
         }
 
+        /// <summary>
+        /// Asocia un perfil a un usuario
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// up_perfil : Codigo del perfil <br />
+        /// up_usuario : Codigo del usuario <br />
+        /// up_estado : Estado del registro [A] Activo, [I] Inactivo <br /><br />
+        /// Procedimiento almacenado : api_IngresoUsuarioPerfil
+        /// </remarks>
         [HttpPost]
         [Route("Ingreso")]
         public async Task<string> Ingreso([FromBody] UsuarioPerfil perfil)
@@ -31,6 +41,16 @@ namespace ApiSeguridad.Controllers
             return JSONString;
         }
 
+        /// <summary>
+        /// Actualiza el estado del perfil asociado al usuario
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// up_perfil : Codigo del perfil <br />
+        /// up_usuario : Codigo del usuario <br />
+        /// up_estado : Estado del registro [A] Activo, [I] Inactivo <br /><br />
+        /// Procedimiento almacenado : api_ActualizaUsuarioPerfil
+        /// </remarks>
         [HttpPost]
         [Route("Actualizacion")]
         public async Task<string> Actualizacion([FromBody] UsuarioPerfil perfil)
@@ -47,6 +67,15 @@ namespace ApiSeguridad.Controllers
             return JSONString;
         }
 
+        /// <summary>
+        /// Elimina un perfil previamente asignado a un usuario
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// up_perfil : Codigo del perfil <br />
+        /// up_usuario : Codigo del usuario <br />
+        /// Procedimiento almacenado : api_EliminaUsuarioPerfil
+        /// </remarks>
         [HttpPost]
         [Route("Eliminacion")]
         public async Task<string> Eliminacion([FromBody] UsuarioPerfil perfil)
@@ -63,6 +92,14 @@ namespace ApiSeguridad.Controllers
             return JSONString;
         }
 
+        /// <summary>
+        /// Consulta los perfiles (de transacciones autorizadas) asociados a un usuario 
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// usuario : Codigo del usuario <br />
+        /// Procedimiento almacenado : api_ConsultaUsuarioPerfil
+        /// </remarks>
         [HttpGet]
         [Route("Consulta/{usuario}")]
         public IEnumerable<UsuarioPerfil> Get(int usuario)

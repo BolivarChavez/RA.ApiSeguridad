@@ -16,14 +16,22 @@ namespace ApiSeguridad.Controllers
         }
 
         /// <summary>
-        /// Registra la informacion de una nueva empresa
+        /// Insertar un nuevo registro de empresa en la tabla Empresas
         /// </summary>
         /// <remarks>
-        /// <b>Codigos de operacion permitidos</b><br />
-        /// A : Obtiene las divisiones, areas o departamentos relacionadas a una division o area de orden superior (vigentes)<br />
-        /// Q : Obtiene toda la informacion relacionada a una division, area o departamento especifico<br />
-        /// S : Obtiene las divisiones, areas o departamentos relacionadas a una division o area de orden superior (vigentes y no vigentes)<br />
-        /// </remarks>  
+        /// <b>Parametros</b><br />
+        /// em_codigo : Codigo de la empresa, se ingresa 0 (cero) <br />
+        /// em_nombre : Nombre o razon social de la empresa <br />
+        /// em_pais : Nombre del Pais del domicilio de la empresa <br />
+        /// em_provincia : Nombre de la Provincia del domicilio de la empresa <br />
+        /// em_ciudad : Nombre de la Ciudad del domicilio de la empresa <br />
+        /// em_direccion : Direccion completa de la empresa <br />
+        /// em_telefono : Numeros de telefonos de contacto de la empresa <br />
+        /// em_contacto : Nombre de persona de contacto en la empresa <br />
+        /// em_email : Correos electronicos de contacto de la emrpesa <br />
+        /// em_estado : Estado de la empresa [A] Activa, [I] Inactiva, [X] Eliminada <br /><br />
+        /// Procedimiento almacenado : api_IngresoEmpresa
+        /// </remarks>
         [HttpPost]
         [Route("Ingreso")]
         public async Task<string> Ingreso([FromBody] Empresas empresa)
@@ -40,6 +48,23 @@ namespace ApiSeguridad.Controllers
             return JSONString; 
         }
 
+        /// <summary>
+        /// Actualizar un registro existente de empresa en la tabla Empresas
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// em_codigo : Codigo de la empresa <br />
+        /// em_nombre : Nombre o razon social de la empresa <br />
+        /// em_pais : Nombre del Pais del domicilio de la empresa <br />
+        /// em_provincia : Nombre de la Provincia del domicilio de la empresa <br />
+        /// em_ciudad : Nombre de la Ciudad del domicilio de la empresa <br />
+        /// em_direccion : Direccion completa de la empresa <br />
+        /// em_telefono : Numeros de telefonos de contacto de la empresa <br />
+        /// em_contacto : Nombre de persona de contacto en la empresa <br />
+        /// em_email : Correos electronicos de contacto de la emrpesa <br />
+        /// em_estado : Estado de la empresa [A] Activa, [I] Inactiva, [X] Eliminada <br /><br />
+        /// Procedimiento almacenado : api_ActualizaEmpresa
+        /// </remarks>
         [HttpPost]
         [Route("Actualizacion")]
         public async Task<string> Actualizacion([FromBody] Empresas empresa)
@@ -56,6 +81,14 @@ namespace ApiSeguridad.Controllers
             return JSONString;
         }
 
+        /// <summary>
+        /// Consulta los registros de la tabla de empresas 
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// codigo : Codigo de empresa, para consultar todas las empresas se coloca cero (0) <br /><br />
+        /// Procedimiento almacenado : api_ConsultaEmpresa
+        /// </remarks> 
         [HttpGet]
         [Route("Consulta/{codigo}")]
         public IEnumerable<Empresas> Get(int codigo)

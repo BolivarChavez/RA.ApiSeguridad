@@ -15,6 +15,16 @@ namespace ApiSeguridad.Controllers
             _repository = repository;
         }
 
+        /// <summary>
+        /// Insertar un nuevo registro de facultad en la tabla Facultades 
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// fa_codigo : Codigo de la facultad, se ingresa 0 (cero)  <br />
+        /// fa_descripcion : Nombre o descripcion de la facultad <br />
+        /// fa_estado : Estado de la facultad [A] Activa, [I] Inactiva, [X] Eliminada <br /><br />
+        /// Procedimiento almacenado : api_IngresoFacultad
+        /// </remarks>
         [HttpPost]
         [Route("Ingreso")]
         public async Task<string> Ingreso([FromBody] Facultades facultad)
@@ -31,6 +41,16 @@ namespace ApiSeguridad.Controllers
             return JSONString;
         }
 
+        /// <summary>
+        /// Actualizar un registro de facultad previamente ingresado 
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// fa_codigo : Codigo de la facultad  <br />
+        /// fa_descripcion : Nombre o descripcion de la facultad <br />
+        /// fa_estado : Estado de la facultad [A] Activa, [I] Inactiva, [X] Eliminada <br /><br />
+        /// Procedimiento almacenado : api_ActualizaFacultad
+        /// </remarks>
         [HttpPost]
         [Route("Actualizacion")]
         public async Task<string> Actualizacion([FromBody] Facultades facultad)
@@ -47,6 +67,14 @@ namespace ApiSeguridad.Controllers
             return JSONString;
         }
 
+        /// <summary>
+        /// Consulta los registros de la tabla de facultades
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// codigo : Codigo de la facultad. Cero para consultar todas las facultades   <br />
+        /// Procedimiento almacenado : api_ConsultaFacultad
+        /// </remarks>
         [HttpGet]
         [Route("Consulta/{codigo}")]
         public IEnumerable<Facultades> Get(int codigo)

@@ -15,6 +15,16 @@ namespace ApiSeguridad.Controllers
             _repository = repository;
         }
 
+        /// <summary>
+        /// Insertar un nuevo registro de perfil en la tabla de perfiles 
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// pe_codigo : Codigo del perfil, cero (0) para nuevo perfil <br />
+        /// pe_descripcion : Nombre o descripcion de la oficina <br />
+        /// pe_estado : Estado del perfil [A] Activa, [I] Inactiva, [X] Eliminada <br /><br />  
+        /// Procedimiento almacenado : api_IngresoPerfil
+        /// </remarks>
         [HttpPost]
         [Route("Ingreso")]
         public async Task<string> Ingreso([FromBody] Perfiles perfil)
@@ -31,6 +41,16 @@ namespace ApiSeguridad.Controllers
             return JSONString;
         }
 
+        /// <summary>
+        /// Actualizar un registro de perfil previamente ingresado 
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// pe_codigo : Codigo del perfil <br />
+        /// pe_descripcion : Nombre o descripcion de la oficina <br />
+        /// pe_estado : Estado del perfil [A] Activa, [I] Inactiva, [X] Eliminada <br /><br />  
+        /// Procedimiento almacenado : api_ActualizaPerfil
+        /// </remarks>
         [HttpPost]
         [Route("Actualizacion")]
         public async Task<string> Actualizacion([FromBody] Perfiles perfil)
@@ -47,6 +67,14 @@ namespace ApiSeguridad.Controllers
             return JSONString;
         }
 
+        /// <summary>
+        /// Consulta los perfiles registrados en la tabla de perfiles 
+        /// </summary>
+        /// <remarks>
+        /// <b>Parametros</b><br />
+        /// codigo : Codigo del perfil, cero (0) para consultar todos los perfiles <br />
+        /// Procedimiento almacenado : api_ConsultaPerfil
+        /// </remarks>
         [HttpGet]
         [Route("Consulta/{codigo}")]
         public IEnumerable<Perfiles> Get(int codigo)
